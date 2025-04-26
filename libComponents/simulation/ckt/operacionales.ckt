@@ -1,0 +1,1015 @@
+*********
+* TL08X (Modelo idéntico al del TL07X) *
+*********
+*             Non-Inverting Input
+*             |   Inverting Input
+*             |   |   Positive Power Supply
+*             |   |   |   Negative Power Supply
+*             |   |   |   |   Output
+*             |   |   |   |   |
+.SUBCKT TL08X 1   2   3   4   5
+  C1   11 12 3.498E-12
+  C2    6  7 15E-12
+  DC    5 53 DX
+  DE   54  5 DX
+  DLP  90 91 DX
+  DLN  92 90 DX
+  DP    4  3 DX
+  BGND 99  0 V=V(3)*.5 + V(4)*.5
+  BB    7 99 I=I(VB)*4.715E6 - I(VC)*5E6 + I(VE)*5E6 +
++              I(VLP)*5E6 - I(VLN)*5E6
+  GA    6  0 11 12 282.8E-6
+  GCM   0  6 10 99 8.942E-9
+  ISS   3 10 DC 195E-6
+  HLIM 90  0 VLIM 1K
+  J1   11  2 10 JX
+  J2   12  1 10 JX
+  R2    6  9 100E3
+  RD1   4 11 3.536E3
+  RD2   4 12 3.536E3
+  RO1   8  5 150
+  RO2   7 99 150
+  RP    3  4 2.143E3
+  RSS  10 99 1.026E6
+  VB    9  0 DC 0
+  VC    3 53 DC 2.2
+  VE   54  4 DC 2.2
+  VLIM  7  8 DC 0
+  VLP  91  0 DC 25
+  VLN   0 92 DC 25
+.MODEL DX D(IS=800E-18)
+.MODEL JX PJF(IS=15E-12 BETA=270.1E-6 VTO=-1)
+.ENDS TL08X
+
+
+
+
+
+*Del Protel
+*TL061
+*Sngl LoPwr JFETinput OpAmp pkg:DIP8 3,2,7,4,6
+*
+* Connections:
+*             Non-Inverting Input
+*             |   Inverting Input
+*             |   |   Positive Power Supply
+*             |   |   |   Negative Power Supply
+*             |   |   |   |   Output
+*             |   |   |   |   |
+.SUBCKT TL06X 1   2   3   4   5
+  C1   11 12 3.498E-12
+  C2    6  7 15E-12
+  DC    5 53 DX
+  DE   54  5 DX
+  DLP  90 91 DX
+  DLN  92 90 DX
+  DP    4  3 DX
+  BGND 99  0 V=V(3)*.5 + V(4)*.5
+  BB    7 99 I=I(VB)*318.3E3 - I(VC)*300E3 + I(VE)*300E3 +
++              I(VLP)*300E3 - I(VLN)*300E3
+  GA    6  0 11 12 94.26E-6
+  GCM   0  6 10 99 1.607E-9
+  ISS   3 10 DC 52.5E-6
+  HLIM 90  0 VLIM 1K
+  J1   11  2 10 JX
+  J2   12  1 10 JX
+  R2    6  9 100E3
+  RD1   4 11 10.61E3
+  RD2   4 12 10.61E3
+  RO1   8  5 200
+  RO2   7 99 200
+  RP    3  4 150E3
+  RSS  10 99 3.81E6
+  VB    9  0 DC 0
+  VC    3 53 DC 2.2
+  VE   54  4 DC 2.2
+  VLIM  7  8 DC 0
+  VLP  91  0 DC 15
+  VLN   0 92 DC 15
+.MODEL DX D(IS=800E-18)
+.MODEL JX PJF(IS=15E-12 BETA=100.5E-6 VTO=-1)
+.ENDS TL06X
+
+
+
+*********************************************************************************************
+
+
+
+
+*BEGIN MODEL LMH6609
+*//////////////////////////////////////////////////////////////////////
+* (C) National Semiconductor, Corporation.
+* Models developed and under copyright by:
+* National Semiconductor, Corporation.
+*/////////////////////////////////////////////////////////////////////
+* Legal Notice:
+* The model may be copied, and distributed without any modifications;
+* however, reselling or licensing the material is illegal.
+* We reserve the right to make changes to the model without prior notice.
+* Pspice Models are provided "AS IS, WITH NO WARRANTY OF ANY KIND"
+*////////////////////////////////////////////////////////////////////
+* For more information, and our latest models,
+* please visit the models section of our website at
+*       http://www.national.com/models/
+*////////////////////////////////////////////////////////////////////
+*MODEL FEATURES INCLUDE OUTPUT SWING, OUTPUT CURRENT THRU
+*THE SUPPLY RAILS, GAIN AND PHASE, SLEW RATE, COMMON MODE
+*REJECTION, POWER SUPPLY REJECTION ON BOTH RAILS, INPUT
+*VOLTAGE NOISE WITH 1/F,INPUT CURRENT NOISE WITH 1/F,
+*OUPUT IMPEDANCE, INPUT CAPACITANCE, INPUT BIAS CURRENT,
+*INPUT COMMON MODE RANGE,INPUT OFFSET, HIGH CLOAD DRIVE
+*CAPABILITY, OUTPUT CLAMPS TO THE RAIL, AND QUIESCENT
+*SUPPLY CURRENT.
+
+*MODEL TEMP RANGE IS -40 TO +85 DEG C.
+///////////////////////////////////////////////////////
+**********************************
+* PINOUT ORDER +IN -IN +V -V OUT
+* PINOUT ORDER  3   4   5  2  1
+.SUBCKT LMH6609 3 4 5 2 1
+* BEGIN MODEL PROGRAMMING
+* USE +- 5 VOLT GROUP OR +-3.3 V GROUP BY
+* UNCOMMENTING DESIRED GROUP (3 LINES)
+* FOR SUPPLY VALUES BETWEEN +-3.3 AND +-5
+* LINEARLY INTERPOLATE VALUES
+************
+* BEGIN +-5 VOLT GROUP
+************
+* R68 AND R69 MODIFY VOLTAGE NOISE
+* G5 MODIFIES BANDWIDTH AND SLEW
+R68 27 51 17
+R69 52 50 17
+G5 39 0 42 43 -1E-3
+* END +-5 VOLT GROUP
+************
+* BEGIN +-3.3 VOLT GROUP
+************
+* R68 AND R69 MODIFY VOLTAGE NOISE
+* G5 MODIFIES BANDWIDTH AND SLEW
+*R68 27 51 125
+*R69 52 50 125
+*G5 39 0 42 43 -0.85E-3
+* END +-3.3 VOLT GROUP
+* END MODEL PROGRAMMING
+Q17 2 6 7 QOP
+Q21 5 8 7 QON
+D5 1 5 DD
+D6 2 1 DD
+D7 9 0 DIN
+D8 10 0 DIN
+I8 0 9 0.1E-3
+I9 0 10 0.1E-3
+E2 11 0 2 0 1
+E3 12 0 5 0 1
+D9 13 0 DVN
+D10 14 0 DVN
+I10 0 13 2E-3
+I11 0 14 2E-3
+E4 15 4 13 14 1
+G2 3 15 9 10 0.45E-4
+R22 2 5 66E3
+E5 16 0 12 0 1
+E6 17 0 11 0 1
+E7 18 0 19 0 1
+R30 16 20 1E3
+R31 17 21 1E3
+R32 18 22 1E3
+R33 0 20 0.1
+R34 0 21 0.1
+R35 0 22 0.1
+E10 23 3 22 0 0.63
+R36 24 19 1E3
+R37 19 25 1E3
+C6 16 20 1000E-12
+C7 17 21 2000E-12
+C8 18 22 2000E-12
+E11 26 23 21 0 0.63
+E12 27 26 20 0 0.91
+Q22 11 28 8 QDP
+Q23 12 28 6 QDN
+I12 5 2 -3.7E-3
+I13 12 8 0.6E-3
+I14 6 11 0.6E-3
+R38 0 29 10
+R39 0 28 10
+C9 29 0 15E-12
+C10 28 0 12E-12
+E15 30 31 32 0 1
+E16 31 33 32 0 1
+E17 34 0 31 0 1
+D11 35 12 DD
+D12 11 36 DD
+V11 33 36 1.75
+V12 35 30 1.75
+I15 0 37 1E-3
+D13 37 0 DD
+V13 32 37 -0.6551
+C11 31 0 2.9E-12
+D14 38 39 DD
+D15 39 40 DD
+R40 39 31 5
+R41 0 39 600E3
+C12 15 0 1.2E-12
+C13 27 0 1.2E-12
+R43 7 41 7
+G3 29 0 31 0 0.1
+G4 28 0 29 0 0.1
+L1 41 1 4E-9
+R45 41 1 100
+E20 38 34 32 0 1
+E21 40 34 32 0 -1
+C15 15 27 0.2E-12
+R49 44 45 210
+R50 44 46 210
+I16 12 47 3.1E-3
+R51 42 48 1527
+R52 43 48 1527
+V14 44 49 0.7
+V15 12 48 0
+C17 42 43 0.02E-12
+D18 50 12 DIC
+D19 51 12 DIC
+E25 25 0 3 0 1
+E26 24 0 15 0 1
+C18 1 0 0.1E-12
+R58 31 30 1E9
+R59 33 31 1E9
+R60 4 15 1E9
+R61 3 23 1E9
+R62 23 26 1E9
+R63 26 27 1E9
+V16 15 50 0.57E-3
+R64 34 40 1E9
+R65 34 38 1E9
+Q28 42 52 45 QIN
+Q29 43 51 46 QIN
+Q30 49 47 11 QIN
+Q31 47 47 11 QIN
+G6 5 2 5 2 1E-3
+I17 0 50 5.2E-6
+I18 0 51 5.2E-6
+R70 0 32 1E9
+.MODEL QDP PNP
+.MODEL QDN NPN
+.MODEL QON NPN VAF=150 BF=200 IKF=1.5 RE=1 RC=9
+.MODEL QOP PNP VAF=150 BF=200 IKF=1.5 RE=1 RC=9
+.MODEL QIN NPN VAF=150 BF=320 IKF=0.005 RE=1 RC=1
+.MODEL DD D
+.MODEL DVN D KF=1E-14
+.MODEL DIN D KF=26E-14
+.MODEL DIC D RS=500
+.ENDS
+*END MODEL LMH6609
+
+
+
+
+
+
+
+
+
+
+
+*//////////////////////////////////////////////////////////////////////
+* (C) National Semiconductor, Corporation.
+* Models developed and under copyright by:
+* National Semiconductor, Corporation.
+*/////////////////////////////////////////////////////////////////////
+* Legal Notice:
+* The model may be copied, and distributed without any modifications;
+* however, reselling or licensing the material is illegal.
+* We reserve the right to make changes to the model without prior notice.
+* Pspice Models are provided "AS IS, WITH NO WARRANTY OF ANY KIND"
+*////////////////////////////////////////////////////////////////////
+* For more information, and our latest models,
+* please visit the models section of our website at
+*       http://www.national.com/models/
+*////////////////////////////////////////////////////////////////////
+* BEGIN MODEL LMH6624
+* PINOUT ORDER +IN -IN +V -V OUT
+* PINOUT ORDER  1   2   3  4  5
+.SUBCKT LMH6624 1 2 3 4 5
+* BEGIN MODEL PROGRAMMING
+* R40 SETS SLEW FOR +- 6.0 VOLT OPERATION
+R40 39 31 164
+* R40 SETS SLEW FOR +- 2.5 VOLT OPERATION
+*R40 39 31 183
+* TO PROGRAM FOR OTHER TOTAL SUPPLY VOLTAGES,
+* PROPORTION THE VALUE OF R40 BETWEEN THE
+* VALUES ABOVE
+* END MODEL PROGRAMMING
+Q17 4 6 7 QOP
+Q21 3 8 7 QON
+D5 5 3 DD
+D6 4 5 DD
+D7 9 0 DIN
+D8 10 0 DIN
+I8 0 9 0.1E-3
+I9 0 10 0.1E-3
+E2 11 0 4 0 1
+E3 12 0 3 0 1
+D9 13 0 DVN
+D10 14 0 DVN
+I10 0 13 2E-3
+I11 0 14 2E-3
+E4 15 2 13 14 0.4
+G2 1 15 9 10 1.05E-4
+R22 4 3 11.67E3
+E5 16 0 12 0 1
+E6 17 0 11 0 1
+E7 18 0 19 0 1
+R30 16 20 1E5
+R31 17 21 1E5
+R32 18 22 1E5
+R33 0 20 10
+R34 0 21 10
+R35 0 22 10
+E10 23 1 22 0 0.5
+R36 24 19 1E3
+R37 19 25 1E3
+C6 16 20 100E-12
+C7 17 21 2E-12
+C8 18 22 0.7E-12
+E11 26 23 21 0 0.095
+E12 27 26 20 0 0.02
+Q22 11 28 8 QDP
+Q23 12 28 6 QDN
+I12 3 4 10.37E-3
+I13 12 8 0.6E-3
+I14 6 11 0.6E-3
+R38 0 29 10
+R39 0 28 10
+C9 29 0 36E-12
+C10 28 0 12E-12
+E15 30 31 32 0 1
+E16 31 33 32 0 1
+E17 34 0 31 0 1
+D11 35 12 DD
+D12 11 36 DD
+V11 33 36 1.397
+V12 35 30 1.417
+I15 0 37 1E-3
+D13 37 0 DD
+V13 32 37 -0.6551
+C11 31 0 8.5E-12
+D14 38 39 DD
+D15 39 40 DD
+R41 0 39 225E3
+C12 15 0 1.8E-12
+C13 27 0 1.8E-12
+R43 7 41 3.5
+G3 29 0 31 0 0.1
+G4 28 0 29 0 0.1
+L1 41 5 4E-9
+R45 41 5 100
+E20 38 34 32 0 1
+E21 40 34 32 0 -1
+C15 15 27 2E-12
+G5 39 0 42 43 -7.5E-3
+R49 44 45 0.1
+R50 44 46 0.1
+I16 12 47 2E-3
+R51 42 48 333
+R52 43 48 333
+V14 44 49 0.65
+V15 12 48 -0.2
+C17 42 43 0.2E-12
+D18 50 51 DIC
+D19 27 51 DIC
+E25 25 0 1 0 1
+E26 24 0 15 0 1
+C18 5 0 0.1E-12
+R58 31 30 1E9
+R59 33 31 1E9
+R60 2 15 1E9
+R61 1 23 1E9
+R62 23 26 1E9
+R63 26 27 1E9
+V16 15 50 0.04E-3
+R64 34 40 1E9
+R65 34 38 1E9
+Q28 42 50 45 QIN
+Q29 43 27 46 QIN
+Q30 49 47 11 QIN
+Q31 47 47 11 QIN
+D20 11 50 DIC
+D21 11 27 DIC
+V17 12 51 1.0
+RN1 32 0 1E9
+.MODEL DD D
+.MODEL DVN D KF=1E-14
+.MODEL DIN D KF=26E-14
+.MODEL DIC D RS=50
+.MODEL QDP PNP
+.MODEL QDN NPN
+.MODEL QON NPN VAF=150 BF=250 IKF=1 RE=1 RC=9
+.MODEL QOP PNP VAF=150 BF=250 IKF=1 RE=1 RC=9
+.MODEL QIN NPN VAF=150 BF=90 IKF=0.005 RE=1 RC=1
+.ENDS
+* END MODEL LMH6624
+
+
+
+
+
+
+
+*//////////////////////////////////////////////////////////////////////
+* (C) National Semiconductor, Corporation.
+* Models developed and under copyright by:
+* National Semiconductor, Corporation.
+*/////////////////////////////////////////////////////////////////////
+* Legal Notice:
+* The model may be copied, and distributed without any modifications;
+* however, reselling or licensing the material is illegal.
+* We reserve the right to make changes to the model without prior notice.
+* Pspice Models are provided "AS IS, WITH NO WARRANTY OF ANY KIND"
+*////////////////////////////////////////////////////////////////////
+* For more information, and our latest models,
+* please visit the models section of our website at
+*       http://www.national.com/models/
+*////////////////////////////////////////////////////////////////////
+* This is a Monolithic Wide band Variable Gain Amplifier.
+* The model below is the CLC522 renamed as LMH6503 (The LMH6504 is a replacement for the CLC522)
+* LMH6503 SPICE MODEL
+* PINOUT ORDER IS:
+* +VCC Vg +Vin +Rg -Rg -Vin -VEE Vref Vout I-
+*
+.SUBCKT LMH6503 1  2  3  4  5  6  7  9  10  12
+*
+*   Other pins on 14-pin DIP:
+*      8  = -Vee
+*      11 = Gnd
+*      13 = +Vcc
+*      14 = +Vcc
+*
+* SIGNAL INPUT STAGE
+*
+V3 1 24 3.30
+Q2 24 25 26 QINN
+E1 3 25 POLY(2) 61 0 62 0 1.00M 3.67 3.67
+C2 3 0 1.00P
+C3 3 12 4.3F
+R3 26 7 3.535K
+V4 1 27 3.30
+Q3 27 6 28 QINN
+C5 6 0 1.00P
+C4 6 12 5.6F
+R4 28 7 3.465K
+*
+E2 29 0 POLY(1) 26 0 0 1.0001
+G1 29 30 POLY(1) 29 30 0 0.667
+L1 30 4 30N
+R5 30 4 150
+R6 4 0 10MEG
+C6 4 0 1.00P
+C7 4 5 500F
+*
+E3 31 0 POLY(1) 28 0 0 0.9999
+G2 31 32 POLY(2) 31 32 35 34 0 1.000 3.187M
+R7 32 0 10MEG
+G3 32 33 POLY(1) 32 33 0 2.000
+L2 33 5 30N
+R8 33 5 150
+R9 5 0 10MEG
+C8 5 0 1.00P
+*
+E4 34 0 POLY(1) 31 32 0 313.8
+R10 34 35 10.0
+D1 35 36 DZ
+V5 36 0 -465M
+D2 37 35 DZ
+V6 37 0 465M
+*
+* GAIN INPUT
+*
+V1 1 20 2.80
+R1 2 21 50.0
+C1 2 0 1.00P
+Q1 20 21 22 QINN
+R2 22 23 770
+V2 23 7 2.61
+*
+E5 38 0 POLY(1) 22 0 71.20 98.00
+R11 38 39 10.0
+D3 39 40 DZ
+V7 40 0 93.50
+D4 41 39 DZ
+V8 41 0 -105.00
+*
+* MULTIPLIER STAGE
+*
+V9 1 42 2.80
+D5 42 43 DZ
+C9 43 0 250F
+G4 43 7 POLY(1) 39 0 552.0U 5.520U 250P
+V10 1 44 2.80
+D6 44 45 DZ
+C10 45 0 250F
+G5 45 7 POLY(1) 39 0 552.0U -5.520U -250P
+*
+R12 1 46 240
+C11 46 0 450F
+C12 46 49 210F
+R14 49 0 40.0
+C13 49 12 210F
+Q4 46 45 47 QMULT 2.00
+Q5 1 43 47 QMULT 2.00
+C17 47 0 250F
+G6 47 7 POLY(4) 1 7 29 30 63 0 64 0
++ -139.4U 185.8U 666.7M 15.0M 15.0M
+*
+R13 1 48 240
+C14 48 0 450F
+C15 48 12 210F
+C16 12 0 1.00P
+Q6 48 45 50 QMULT 2.00
+Q7 1 43 50 QMULT 2.00
+C18 50 0 250F
+G7 50 7 POLY(4) 1 7 32 33 65 0 66 0
++ -139.4U 185.8U 2.000 15.0M 15.0M
+G8 1 12 POLY(4) 1 46 1 48 67 0 68 0
++ 0 -4.167M 4.167M 22.4M 22.4M
+*
+* AMPLIFIER INPUT STAGE
+*
+R17 1 54 8.00K
+D8 54 55 DZ
+R18 9 55 50.0
+C22 9 0 1.00P
+Q8 51 54 12 QINN
+*
+D9 55 56 DZ
+R19 56 7 8.00K
+Q9 52 56 12 QINP
+*
+* AMPLIFIER GAIN STAGE
+*
+R15 1 51 497
+C19 51 58 250F
+C20 51 0 500F
+C21 51 10 100F
+G9 1 58 POLY(1) 1 51 0 8.048M
+V11 1 53 1.60
+D7 58 53 DX
+G11 1 59 POLY(1) 1 51 0 11.50M
+C27 59 0 500F
+*
+R16 52 7 497
+C25 52 58 130F
+C24 52 0 250F
+C23 52 10 100F
+G10 58 7 POLY(1) 52 7 0 8.048M
+D10 57 58 DX
+V12 57 7 1.60
+G12 60 7 POLY(1) 52 7 0 11.50M
+C28 60 0 250F
+*
+* AMPLIFIER OUTPUT STAGE
+*
+R20 58 0 250K
+C26 58 0 1.50P
+Q10 7 58 59 QOUTP1
+Q11 1 58 60 QOUTN1
+Q12 1 59 10 QOUTN2
+Q13 7 60 10 QOUTP2
+C29 10 0 1.60P
+*
+* POWER SUPPLY BLOCK
+*
+G13 1 7 POLY(1) 1 7 -7.00M 3.00M
+*
+* NOISE BLOCKS
+*
+I1 62 61 DC 846U
+D11 61 0 DN
+D12 0 62 DN
+*
+I2 64 63 DC 846U
+D13 63 0 DN
+D14 0 64 DN
+*
+I3 66 65 DC 846U
+D15 65 0 DN
+D16 0 66 DN
+*
+I4 68 67 DC 846U
+D17 67 0 DN
+D18 0 68 DN
+*
+* MODELS
+*
+.MODEL DN D IS=0.166F RS=15.2 KF=100F AF=1.00
+.MODEL DX D TT=200N
+.MODEL DZ D IS=0.166F
+*
+.MODEL QINN NPN
++ IS =0.166F    BF =3.239E+02  NF =1.000E+00  VAF=84.6
++ IKF=2.462E-02 ISE=2.956E-17  NE =1.197E+00  BR =3.719E+01
++ NR =1.000E+00 VAR=1.696E+00  IKR=3.964E-02  ISC=1.835E-19
++ NC =1.700E+00 RB =68         IRB=0.000E+00  RBM=15.1
++ RC =2.645E+01 CJE=1.632E-13  VJE=7.973E-01
++ MJE=4.950E-01 TF =1.948E-11  XTF=1.873E+01  VTF=2.825E+00
++ ITF=5.955E-02 PTF=0.000E+00  CJC=1.720E-13  VJC=8.046E-01
++ MJC=4.931E-01 XCJC=171M       TR =4.212E-10  CJS=629F
++ MJS=0         KF =100F       AF =1.000E+00
++ FC =9.765E-01
+*
+.MODEL QMULT NPN
++ IS =0.166F    BF =3.239E+02 NF =1.000E+00 BR =3.719E+01
++ NR =1.000E+00 RB =68        IRB=0.000E+00 RBM=15.1
++ RC =2.645E+01 CJE=1.632E-13 VJE=7.973E-01
++ MJE=4.950E-01 TF =1.948E-11 XTF=1.873E+01 VTF=2.825E+00
++ ITF=5.955E-02 PTF=0.000E+00 CJC=1.720E-13 VJC=8.046E-01
++ MJC=4.931E-01 XCJC=171M     TR =4.212E-10 CJS=629F
++ MJS=0         KF =100F      AF =1.000E+00 FC =9.765E-01
+*
+.MODEL QOUTN1 NPN
++ IS =7.822E-16 BF =3.239E+02  NF =1.000E+00 VAF=8.457E+01
++ IKF=9.079E-02 ISE=1.090E-16  NE =1.197E+00 BR =3.960E+01
++ NR =1.000E+00 VAR=1.696E+00  IKR=1.462E-01 ISC=5.656E-19
++ NC =1.700E+00 RB =1.843E+01  IRB=0.000E+00 RBM=4.083E+00
++ RC =6.141E+00 CJE=5.858E-13  VJE=7.973E-01
++ MJE=4.950E-01 TF =1.874E-11  XTF=1.873E+01 VTF=2.825E+00
++ ITF=2.196E-01 PTF=0.000E+00  CJC=5.143E-13 VJC=8.046E-01
++ MJC=4.931E-01 XCJC=1.709E-01 TR =1.069E-09 CJS=8.567E-13
++ VJS=5.723E-01 MJS=4.105E-01  KF =100F      AF =1.000E+00
++ FC =9.765E-01
+*
+.MODEL QOUTN2 NPN
++ IS =1.880E-15 BF =3.239E+02 NF =1.000E+00 VAF=8.457E+01
++ IKF=2.182E-01 ISE=2.620E-16 NE =1.197E+00 BR =3.971E+01
++ NR =1.000E+00 VAR=1.696E+00 IKR=3.513E-01 ISC=1.348E-18
++ NC =1.700E+00 RB =57.7      IRB=0.000E+00 RBM=51.7
++ RC =3.738E+00 CJE=1.408E-12 VJE=7.973E-01
++ MJE=4.950E-01 TF =1.871E-11 XTF=1.873E+01 VTF=2.825E+00
++ ITF=5.278E-01 PTF=0.000E+00 CJC=1.224E-12 VJC=8.046E-01
++ MJC=4.931E-01 XCJC=800M     TR =1.296E-09 CJS=1.496E-12
++ MJS=4.105E-01 KF =100F      AF =1.000E+00
++ FC =9.765E-01
+*
+.MODEL QINP PNP
++ IS =0.166F    BF =7.165E+01 NF =1.000E+00 VAF=3.439E+01
++ IKF=1.882E-02 ISE=6.380E-16 NE =1.366E+00 BR =1.833E+01
++ NR =1.000E+00 VAR=1.805E+00 IKR=1.321E-01 ISC=3.666E-18
++ NC =1.634E+00 RB =28.8      IRB=0.000E+00 RBM=7.6
++ RC =3.739E+01 CJE=1.588E-13 VJE=7.975E-01
++ MJE=5.000E-01 TF =3.156E-11 XTF=5.386E+00 VTF=2.713E+00
++ ITF=5.084E-02 PTF=0.000E+00 CJC=2.725E-13 VJC=7.130E-01
++ MJC=4.200E-01 XCJC=170M     TR =7.500E-11 CJS=515F
++ MJS=0         KF =100F      AF =1.000E+00 FC =8.803E-01
+*
+.MODEL QOUTP1 PNP
++ IS =4.744E-16 BF =7.165E+01  NF =1.000E+00 VAF=3.439E+01
++ IKF=6.940E-02 ISE=2.353E-15  NE =1.366E+00 BR =1.948E+01
++ NR =1.000E+00 VAR=1.805E+00  IKR=4.873E-01 ISC=1.322E-17
++ NC =1.634E+00 RB =7.797E+00  IRB=0.000E+00 RBM=2.052E+00
++ RC =1.037E+01 CJE=5.858E-13  VJE=7.975E-01
++ MJE=5.000E-01 TF =3.073E-11  XTF=5.386E+00 VTF=2.713E+00
++ ITF=1.875E-01 PTF=0.000E+00  CJC=8.147E-13 VJC=7.130E-01
++ MJC=4.200E-01 XCJC=1.709E-01 TR =1.450E-10 CJS=1.364E-12
++ VJS=6.691E-01 MJS=3.950E-01  KF =100F      AF =1.000E+00
++ FC =8.803E-01
+*
+.MODEL QOUTP2 PNP
++ IS =1.140E-15 BF =7.165E+01 NF =1.000E+00 VAF=3.439E+01
++ IKF=1.668E-01 ISE=5.655E-15 NE =1.366E+00 BR =1.953E+01
++ NR =1.000E+00 VAR=1.805E+00 IKR=1.171E+00 ISC=3.173E-17
++ NC =1.634E+00 RB =53.2      IRB=0.000E+00 RBM=50.9
++ RC =6.213E+00 CJE=1.408E-12 VJE=7.975E-01
++ MJE=5.000E-01 TF =3.070E-11 XTF=5.386E+00 VTF=2.713E+00
++ ITF=4.506E-01 PTF=0.000E+00 CJC=1.939E-12 VJC=7.130E-01
++ MJC=4.200E-01 XCJC=900M     TR =1.850E-10 CJS=2.351E-12
++ MJS=3.950E-01 KF =100F      AF =1.000E+00
++ FC =8.803E-01
+*
+.ENDS
+
+
+
+*/////////////////////////////////////////////////
+*LM6152A  Operational Amplifier Macro-Model
+*/////////////////////////////////////////////////
+*
+* connections:       non-inverting input
+*                    |      inverting input
+*                    |      |      positive power supply
+*                    |      |      |       negative power supply
+*                    |      |      |       |      output
+*                    |      |      |       |      |
+*                    |      |      |       |      |
+.SUBCKT LM6152A_NSC  3      2      4       5      6
+*
+*Features
+*Rail to Rail Output Swing
+*Greater than Rail to Rail Input CMVR
+*Low Supply Current
+*
+EOX 120 10 31 32 2.0
+RCX 120 121 1K
+RDX 121 10 1K
+RBX 120 122 1K
+GOS 10 57 122 121 1.0
+RVOS 31 32 1K
+RINB 2 18 1000
+RINA 3 19 1000
+DIN1 5 18 DMOD2
+DIN2 18 4 DMOD2
+DIN3 5 19 DMOD2
+DIN4 19 4 DMOD2
+EXX 10 5 17 5 1.0
+EEE 10 50 17 5 1.0
+ECC 40 10 4 17 1.0
+RAA 4 17 100MEG
+RBB 17 5 100MEG
+ISET 10 24 1e-3
+DA1 24 23 DMOD1
+RBAL 23 22 1000
+ESUPP 22 21 4 5 1.0
+VOFF 21 10 -1.25
+DA2 24 25 DMOD1
+VSENS1 25 26 DC 0
+RSET 26 10 1K
+CSET 26 10 1e-10
+FSET 10 31 VSENS1 1.0
+R001 34 10 1K
+FTEMP 10 27 VSENS1 1.0
+DTA 27 10 DMOD2
+DTB 28 29 DMOD2
+VTEMP 29 10 DC 0
+ECMR 38 10 11 10 1.0
+VCMX 38 39 DC 0
+RCM2 41 10 1MEG
+EPSR 42 10 4 10 1.0
+CDC1 43 42 10U
+VPSX 43 44 DC 0
+RPSR2 45 10 1MEG
+FCXX 57 10 VCXX 100
+DCX1 98 97 DMOD1
+DCX2 95 94 DMOD1
+RCX1 99 98 100
+RCX2 94 99 100
+VCXX 99 96 DC 0
+ECMX 96 10 11 10 1.0
+DLIM1 52 57 DMOD1
+DLIM2 57 51 DMOD1
+ELIMP 51 10 26 10 99.3
+GDM 10 57 3 2 1
+C1 58 59 1e-10
+DCLMP2 59 40 DMOD1
+DCLMP1 50 59 DMOD1
+RO2 59 10 1K
+GO3 10 71 59 10 1
+RO3 71 10 1
+DDN1 73 74 DMOD1
+DDN2 73 710 DMOD1
+DDP1 75 72 DMOD1
+DDP2 71 720 DMOD1
+RDN2 710 71 100
+RDP 720 72 100
+VOOP 40 76 DC 0
+VOON 77 50 DC 0
+QNO 76 73 78 NPN1
+QNP 77 72 79 PNP1
+RNO 78 81 1
+RPO 79 81 1
+VOX 86 6 DC 0
+RNT 76 81 100MEG
+RPT 81 77 1MEG
+FX 10 93 VOX 1.0
+DFX1 93 91 DMOD1
+VFX1 91 10 DC 0
+DFX2 92 93 DMOD1
+VFX2 10 92 DC 0
+FPX 4 10 VFX1 1.0
+FNX 10 5 VFX2 1.0
+RAX 122 10 MRAX 1.004000e+03
+* Input Offset Voltage
+.MODEL MRAX R (TC1=4.66e-05)
+FIN1 18 5 VTEMP 0.97
+FIN2 19 5 VTEMP 1.03
+* Input Bias Currents
+CIN1 2 10 1e-12
+CIN2 3 10 1e-12
+* Common Mode Input Capacitance
+RD1 18 11 500000
+RD2 19 11 500000
+* Diff. Input Resistance
+RCM 11 10 2.75e+06
+* Common Mode Input Resistance
+FCMR 10 57 VCMX 19.9526
+* Low Freq. CMRR
+FPSR 10 57 VPSX 56.3677
+* Low Freq. PSRR
+RSLOPE 4 5 100000
+* Slope of Supp. Curr. vs. Supp. Volt.
+GPWR 4 5 26 10 0.00135
+* Quiescent Supply Current
+ETEMP 27 28 32 33 0.196331
+RIB 32 33 MRIB 1K
+* Temp. Co. of Input Currents
+.MODEL MRIB R (TC1=0.00228762)
+RISC 33 34 MRISC 1K
+.MODEL MRISC R (TC1=-0.0015)
+RCM1 39 41 199.526
+CCM 41 10 1.59155e-09
+* CMRR vs. Freq.
+RPSR1 44 45 281.838
+CPSR 45 10 1.59155e-09
+* PSRR vs. Freq.
+ELIMN 10 52 26 10 99.3
+RDM 57 10 1475.22
+C2 57 10 8.84306e-13
+ECMP 40 97 26 10 0
+ECMN 95 50 26 10 0
+G2 58 10 57 10 3e-05
+R2 58 10 22.5954
+GO2 59 10 58 10 214
+* Avol and Slew-Rate Settings
+EPOS 40 74 26 10 0
+ENEG 75 50 26 10 0.1
+* Output Voltage Swing Settings
+GSOURCE 74 73 33 34 6.2e-05
+GSINK 72 75 33 34 0.000169
+* Output Current Settings
+ROO 81 86 2.5
+.MODEL DMOD1 D
+*-- DMOD1 DEFAULT PARAMETERS
+*IS=1e-14 RS=0 N=1 TT=0 CJO=0
+*VJ=1 M=0.5 EG=1.11 XTI=3 FC=0.5
+*KF=0 AF=1 BV=inf IBV=1e-3 TNOM=27
+.MODEL DMOD2 D  (IS=1e-17)
+*-- DMOD2 DEFAULT PARAMETERS
+*RS=0 N=1 TT=0 CJO=0
+*VJ=1 M=0.5 EG=1.11 XTI=3 FC=0.5
+*KF=0 AF=1 BV=inf IBV=1e-3 TNOM=27
+.MODEL NPN1 NPN (BF=100 IS=1e-15)
+*-- NPN1 DEFAULT PARAMETERS
+*NF=1 VAF=inf IKF=inf ISE=0 NE=1.5
+*BR=1 NR=1 VAR=inf IKR=inf ISC=0
+*NC=2 RB=0 IRB=inf RBM=0 RE=0 RC=0
+*CJE=0 VJE=0.75 MJE=0.33 TF=0 XTF=0
+*VTF=inf ITF=0 PTF=0 CJC=0 VJC=0.75
+*MJC=0.33 XCJC=1 TR=0 CJS=0 VJS=0.75
+*MJS=0 XTB=0 EG=1.11 XTI=3 KF=0 AF=1
+*FC=0.5 TNOM=27
+.MODEL PNP1 PNP (BF=100 IS=1e-15)
+*-- PNP1 DEFAULT PARAMETERS
+*NF=1 VAF=inf IKF=inf ISE=0 NE=1.5
+*BR=1 NR=1 VAR=inf IKR=inf ISC=0
+*NC=2 RB=0 IRB=inf RBM=0 RE=0 RC=0
+*CJE=0 VJE=0.75 MJE=0.33 TF=0 XTF=0
+*VTF=inf ITF=0 PTF=0 CJC=0 VJC=0.75
+*MJC=0.33 XCJC=1 TR=0 CJS=0 VJS=0.75
+*MJS=0 XTB=0 EG=1.11 XTI=3 KF=0 AF=1
+*FC=0.5 TNOM=27
+.ENDS
+
+
+*//////////////////////////////////////////////////////////////////////
+* (C) National Semiconductor, Inc.
+* Models developed and under copyright by:
+* National Semiconductor, Inc.
+
+*/////////////////////////////////////////////////////////////////////
+* Legal Notice: This material is intended for free software support.
+* The file may be copied, and distributed; however, reselling the
+*  material is illegal
+
+*////////////////////////////////////////////////////////////////////
+* For ordering or technical information on these models, contact:
+* National Semiconductor's Customer Response Center
+*                 7:00 A.M.--7:00 P.M.  U.S. Central Time
+*                                (800) 272-9959
+* For Applications support, contact the Internet address:
+*  Appshelp@galaxy.nsc.com
+
+*//////////////////////////////////////////////////////////
+*LM6142A OP-AMP MACRO-MODEL
+*//////////////////////////////////////////////////////////
+*
+* Connections:      Non-inverting input
+*                   |   Inverting input
+*                   |   |   Positive power supply
+*                   |   |   |   Negative power supply
+*                   |   |   |   |   Output
+*                   |   |   |   |   |
+*                   |   |   |   |   |
+.SUBCKT LM6142A     1   2  99  50  28
+* CAUTION:  SET .OPTIONS GMIN=1E-16 TO CORRECTLY MODEL INPUT BIAS CURRENT.
+* Features:
+* Operates from single supply
+* Rail-to-rail output swing
+* Low offset voltage (max) = 1mV
+* Input current = 170nA
+* Slew rate = 27V/uS
+* Gain-bandwidth product = 17MHZ
+* Low supply current = 600uA
+*
+* NOTE: - This model is for a single device only and the simulated
+*         supply current is for one op amp only.
+*       - Noise is not modeled.
+*       - Asymmetrical gain is not modeled.
+*       - In the next revision, the following will be modelled
+*       - Voltage dependent (Vin or Vcc) slew rate
+*       - Gain/phase variation vs output Z
+*
+CI1 1  50 2P
+CI2 2  50 2P
+*
+* 53Hz pole capacitor
+C3  98 9  0.30N
+*
+C4  6  5  .493P
+C7  98 11 3.54F
+*
+DP1 1  99 DA
+DP2 50 1  DX
+DP3 2  99 DB
+DP4 50 2  DX
+D1  9  8  DX
+D2  10 9  DX
+D3  15 20 DX
+D4  21 15 DX
+D5  26 24 DX
+D6  25 27 DX
+D7  22 99 DX
+D8  50 22 DX
+D9  0  14 DX
+D10 12 0  DX
+D11 11 33 DX
+D12 34 11 DX
+D14 31 32 DX
+EH  97 98 99    49 1.0
+EN  0  96 0     50 1.0
+* Input offset voltage -|
+EOS 7  1  POLY(1) 16 49 1M 1
+EP  97 0  99    0  1.0
+E1  97 19 99    15 1.0
+E2  18 7  32    99 1E-3
+* Sourcing load +Vs current
+F1  99 0  VA2   1
+* Sinking load -Vs current
+F2  0  50 VA3   1
+F3  13 0  VA1   1
+G1  98 9  5     6  0.1
+G2  98 11 9     49 1U
+G3  98 15 11    49 1U
+* DC CMRR
+G4  98 16 POLY(2) 1 49 2 49 0 3.54E-8 3.54E-8
+I1  99 4  23U
+I2  99 50 627U
+* Load dependent pole
+L1 22 28 300N
+*
+* CMR lead
+L2  16 17 7.95M
+M1  5  2  4     99 MX
+M2  6  18 4     99 MX
+R3  5  50 3.60K
+R4  6  50 3.60K
+R5  98 9  1E7
+R8  99 49 133.3K
+R9  49 50 133.3K
+R12 98 11 1E6
+R13 98 17 1K
+* -Rout
+R16 23 24 10
+* +Rout
+R17 23 25 18
+* +Isc slope control
+R18 20 29 12K
+* -Isc slope control
+R19 21 30 12K
+R21 98 15 1E6
+R22 22 28 900
+R23 32 97 100K
+VA1 19 23 0V
+VA2 14 13 0V
+VA3 13 12 0V
+V2  97 8  0.625V
+V3  10 96 0.625V
+V4  29 22 -.186V
+V5  22 30 -.186V
+V6  26 22 0.63V
+V7  22 27 0.63V
+V8 31 50 4V
+V9 34 96 .346
+V10 97 33 .346
+*
+.MODEL  DA D    (IS=170E-9)
+.MODEL  DB D    (IS=173E-9)
+.MODEL  DX D    (IS=1.0E-14)
+.MODEL  MX PMOS (VTO=-.6 KP=4.2E-4 GAMMA=1.1)
+.ENDS
+*$
+
+
+
+
+
+
+
+

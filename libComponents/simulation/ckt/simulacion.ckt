@@ -1,0 +1,12 @@
+*Modelo de VCSW con todos los parámetros disponibles
+.SUBCKT VSWITCH 1 2 3 4 PARAMS: VT=0 VH=0 RON=1 ROFF=1T
+SWV 3 4 1 2 VSWITCH
+.MODEL VSWITCH SW(VT={VT} VH={VH} RON={RON} ROFF={ROFF})
+.ENDS VSWITCH
+
+
+**********************************************************
+
+
+
+

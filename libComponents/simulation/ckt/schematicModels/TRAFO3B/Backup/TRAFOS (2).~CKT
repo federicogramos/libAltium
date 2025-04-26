@@ -1,0 +1,30 @@
+*Transformador con 1 secundario
+*Connections:
+*                Vprim+
+*                 | Vprim-
+*                 | | Vsec+
+*                 | | | Vsec-
+*                 | | | |
+.SUBCKT TRAFO1SEC 1 2 3 4 PARAMS: N2N1=1 RESPRIM=0.1 RESSEC=0.1 LPRIM=1u LSEC=1u LMAG=1m
+E1 8 9 6 2 {N2N1}
+VF1 4 9 0V
+F1 6 2 VF1 {N2N1}
+Lm 6 2 {LMAG}
+LP 1 5 {LPRIM}
+LS 7 3 {LSEC}
+RP 5 6 {RESPRIM}
+RS 8 7 {RESSEC}
+.ENDS TRAFO1SEC
+
+
+
+
+
+
+
+
+
+
+
+
+

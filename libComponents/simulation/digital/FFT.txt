@@ -1,0 +1,49 @@
+//Función fft. Flip flop toggle
+//23-02-08
+# fft source
+
+//Data declarations
+INPUTS VCC,GND,T,CLK; //pines que se deben monitorear
+OUTPUTS VCC_LD,Q,QN;//pines que cargan al circuito ó generan señales
+INTEGERS tableIndex;//escalares y vectores enteros
+REALS tt_val,tphl_val,tplh_val,ricc_val;//escalares y vectores reales
+PWR_GND_PINS(VCC,GND); //muestrea pines que serán utilizados como alimentación
+
+//Device setup functions
+VIL_VIH_PERCENT(33,66);//VIL=33% of supply voltage, VIH=66% of supply voltage
+VOL_VOH_MIN(0.1,-0.1,0.1); //set min vol_param=gnd_param+0.1, max voh_param=pwr_param-0.1;
+
+
+//SimCode function initialization: se ejecuta una única vez al comienzo de la simulación
+IF (init_sim) THEN
+  BEGIN
+    rol_param = (100);
+    roh_param = (100);
+    tt_val    = (5n);
+    tphl_val  = (5n);
+    tplh_val  = (5n);
+    ricc_val  = (3e6);
+    STATE Q=ZERO;//inicialización de salidas
+    STATE QN=ONE;
+    EXIT;
+  END;
+
+//Load and drive statements: declares load and drive capabilities of pins
+DRIVE Q,QN=(v0=vol_param, v1=voh_param, ttlh=tt_val, tthl=tt_val);
+LOAD VCC_LD=(v0=gnd_param, r0=ricc_val, t=1p);
+
+//Funcionamiento del dispositivo
+EXT_TABLE tableIndex
+T   CLK  Q    QN
+0   X    Q    ~Q
+1   ^    ~Q   Q
+1   X    Q    ~Q;
+
+
+//Output propagation delays and post-events
+DELAY Q QN =
+  CASE (TRAN_HL): tphl_val
+  CASE (TRAN_LH): tplh_val
+END;
+
+EXIT;
