@@ -1,0 +1,25 @@
+{
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"editor.cursorWidth": 3,
+	
+	"editor.minimap.enabled": false,
+	"editor.rulers": [80],
+	"workbench.colorTheme": "Default High Contrast",
+	"workbench.preferredDarkColorTheme": "Monokai",
+	"workbench.preferredHighContrastColorTheme": "Monokai",
+	"workbench.sideBar.location": "right",
+	"window.zoomLevel": -1,
+	"editor.fontFamily": "'Droid Sans Mono', 'Courier New', monospace",
+	"editor.fontSize": 14,
+	"editor.detectIndentation": false,
+	"editor.overviewRulerBorder": false,
+	"window.density.editorTabHeight": "compact",
+	
+	// Controls whether the editor should render indent guides.
+	"editor.guides.indentation": true,
+	"workbench.colorCustomizations": {
+	"editorIndentGuide.background1": "#101010",
+	"editorIndentGuide.activeBackground1": "#FFFFFF",
+	}
+}
