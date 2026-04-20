@@ -1,0 +1,907 @@
+.MODEL NPNDEF NPN()
+.MODEL PNPDEF PNP()
+
+
+.MODEL BC557B PNP(
++IS=1.68077e-12 BF=3385 NF=1.2121 VAF=196.745
++IKF=1.30809 ISE=1.76095e-13 NE=1.56412 BR=99.5231
++NR=1.23271 VAR=0.978236 IKR=10 ISC=1.76095e-13
++NC=1.21727 RB=17.2944 IRB=0.1 RBM=0.1
++RE=0.354597 RC=1.77298 XTB=0.100946 XTI=1
++EG=1.05 CJE=1.13417e-11 VJE=0.654776 MJE=0.23
++TF=5.99604e-10 XTF=1000 VTF=3935.03 ITF=31.8969
++CJC=9.54039e-12 VJC=0.4 MJC=0.408114 XCJC=0.910091
++FC=0.8 CJS=0 VJS=0.75 MJS=0.5
++TR=1e-07 PTF=0 KF=0 AF=1)
+
+
+.MODEL BC547B NPN(
++IS=7.443e-11 BF=1343.59 NF=1.42606 VAF=80.4901
++IKF=0.427163 ISE=2.4623e-10 NE=2.73946 BR=62.79
++NR=1.5 VAR=1.0092 IKR=4.27163 ISC=2.4623e-10
++NC=1.9119 RB=0.1 IRB=0.1 RBM=0.1
++RE=0.579065 RC=3.01102 XTB=0.1 XTI=2.25359
++EG=1.05 CJE=7.34106e-12 VJE=0.586136 MJE=0.33309
++TF=5.7202e-10 XTF=4.45797 VTF=26.03 ITF=0.487193
++CJC=4.04665e-12 VJC=0.95 MJC=0.343664 XCJC=0.799994
++FC=0.8 CJS=0 VJS=0.75 MJS=0.5
++TR=1e-07 PTF=0 KF=0 AF=1)
+
+.MODEL BC337 NPN(
++    IS = 4.13E-14
++    NF = 0.9822
++    ISE = 3.534E-15
++    NE = 1.35
++    BF = 292.4
++    IKF = 0.9
++    VAF = 145.7
++    NR = 0.982
++    ISC = 1.957E-13
++    NC = 1.3
++    BR = 23.68
++    IKR = 0.1
++    VAR = 20
++    RB = 60
++    IRB = 0.0002
++    RBM = 8
++    RE = 0.1129
++    RC = 0.25
++    XTB = 0
++    EG = 1.11
++    XTI = 3
++    CJE = 3.799E-11
++    VJE = 0.6752
++    MJE = 0.3488
++    TF = 5.4E-10
++    XTF = 4
++    VTF = 4.448
++    ITF = 0.665
++    PTF = 90
++    CJC = 1.355E-11
++    VJC = 0.3523
++    MJC = 0.3831
++    XCJC = 0.455
++    TR = 3E-08
++    CJS = 0
++    VJS = 0.75
++    MJS = 0.333
++    FC = 0.643)
+*
+
+.MODEL MPSA42 NPN(
++ Is=34.9f
++ Xti=3
++ Eg=1.11
++ Vaf=100
++ Bf=2.65K
++ Ne=1.708
++ Ise=16.32p
++ Ikf=23.79m
++ Xtb=1.5
++ Br=9.769
++ Nc=2
++ Isc=0
++ Ikr=0
++ Rc=7
++ Cjc=14.23p
++ Mjc=0.5489
++ Vjc=0.75
++ Fc=0.5
++ Cje=49.62p
++ Mje=0.4136
++ Vje=0.75
++ Tr=934.3p
++ Tf=1.69n
++ Itf=5
++ Vtf=20
++ Xtf=150
++ Rb=10)
+
+
+*
+.MODEL BC817 NPN(
++    IS = 9.198E-14
++    NF = 1.003
++    ISE = 4.468E-16
++    NE = 1.65
++    BF = 338.8
++    IKF = 0.4913
++    VAF = 107.9
++    NR = 1.002
++    ISC = 5.109E-15
++    NC = 1.071
++    BR = 29.48
++    IKR = 0.193
++    VAR = 25
++    RB = 1
++    IRB = 1000
++    RBM = 1
++    RE = 0.2126
++    RC = 0.143
++    XTB = 0
++    EG = 1.11
++    XTI = 3
++    CJE = 3.825E-11
++    VJE = 0.7004
++    MJE = 0.364
++    TF = 5.229E-10
++    XTF = 219.7
++    VTF = 3.502
++    ITF = 7.257
++    PTF = 0
++    CJC = 1.27E-11
++    VJC = 0.4431
++    MJC = 0.3983
++    XCJC = 0.4555
++    TR = 7E-11
++    CJS = 0
++    VJS = 0.75
++    MJS = 0.333
++    FC = 0.905)
+*
+
+
+*
+.MODEL BC807 PNP(
++     IS=1.08E-13
++     NF=0.99
++     ISE=2.713E-14
++     NE=1.4
++     BF=385.7
++     IKF=0.3603
++     VAF=31.29
++     NR=0.9849
++     ISC=5.062E-13
++     NC=1.295
++     BR=20.57
++     IKR=0.054
++     VAR=11.62
++     RB=1
++     IRB=1E-06
++     RBM=0.5
++     RE=0.1415
++     RC=0.2623
++     XTB=0
++     EG=1.11
++     XTI=3
++     CJE=5.114E-11
++     VJE=0.8911
++     MJE=0.4417
++     TF=7.359E-10
++     XTF=1.859
++     VTF=3.813
++     ITF=0.4393
++     PTF=0
++     CJC=2.656E-11
++     VJC=0.62
++     MJC=0.4836
++     XCJC=0.459
++     TR=5.00E-08
++     CJS=0
++     VJS=0.75
++     MJS=0.333
++     FC=0.99)
+*
+
+*
+.MODEL BC846A NPN(
++     IS = 9.677E-15
++     NF = 0.9922
++     ISE = 5.44E-15
++     NE = 2
++     BF = 182.1
++     IKF = 0.14
++     VAF = 143.8
++     NR = 0.9935
++     ISC = 5.236E-12
++     NC = 1.53
++     BR = 7.004
++     IKR = 0.06
++     VAR = 31.15
++     RB = 10
++     IRB = 5E-06
++     RBM = 4
++     RE = 0.78
++     RC = 0.656
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.443E-11
++     VJE = 0.733
++     MJE = 0.3514
++     TF = 6.04E-10
++     XTF = 8.94
++     VTF = 3.78
++     ITF = 0.2711
++     PTF = 0
++     CJC = 3.287E-12
++     VJC = 0.5444
++     MJC = 0.3954
++     XCJC = 0.693
++     TR = 1.1E-07
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.789)
+*
+
+
+*
+.MODEL BC847A NPN(
++     IS = 9.677E-15
++     NF = 0.9922
++     ISE = 5.44E-15
++     NE = 2
++     BF = 182.1
++     IKF = 0.14
++     VAF = 143.8
++     NR = 0.9935
++     ISC = 5.236E-12
++     NC = 1.53
++     BR = 7.004
++     IKR = 0.06
++     VAR = 31.15
++     RB = 10
++     IRB = 5E-06
++     RBM = 4
++     RE = 0.78
++     RC = 0.656
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.443E-11
++     VJE = 0.733
++     MJE = 0.3514
++     TF = 6.04E-10
++     XTF = 8.94
++     VTF = 3.78
++     ITF = 0.2711
++     PTF = 0
++     CJC = 3.287E-12
++     VJC = 0.5444
++     MJC = 0.3954
++     XCJC = 0.6193
++     TR = 1.1E-07
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.789)
+*
+*
+.MODEL BC847B NPN(
++     IS = 1.822E-14
++     NF = 0.9932
++     ISE = 2.894E-16
++     NE = 1.4
++     BF = 324.4
++     IKF = 0.109
++     VAF = 82
++     NR = 0.9931
++     ISC = 9.982E-12
++     NC = 1.763
++     BR = 8.29
++     IKR = 0.09
++     VAR = 17.9
++     RB = 10
++     IRB = 5E-06
++     RBM = 5
++     RE = 0.649
++     RC = 0.7014
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.244E-11
++     VJE = 0.7579
++     MJE = 0.3656
++     TF = 4.908E-10
++     XTF = 9.51
++     VTF = 2.927
++     ITF = 0.3131
++     PTF = 0
++     CJC = 3.347E-12
++     VJC = 0.5463
++     MJC = 0.391
++     XCJC = 0.6193
++     TR = 9E-08
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.979)
+*
+*
+.MODEL BC847C NPN(
++     IS = 2.375E-14
++     NF = 0.9925
++     ISE = 5.16E-16
++     NE = 1.3
++     BF = 524.9
++     IKF = 0.09
++     VAF = 49.77
++     NR = 0.9931
++     ISC = 7.064E-12
++     NC = 1.78
++     BR = 10.04
++     IKR = 0.132
++     VAR = 16
++     RB = 10
++     IRB = 5E-06
++     RBM = 5
++     RE = 0.653
++     RC = 0.78
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.132E-11
++     VJE = 0.7685
++     MJE = 0.3733
++     TF = 4.258E-10
++     XTF = 6.319
++     VTF = 6.4
++     ITF = 0.1845
++     PTF = 0
++     CJC = 3.379E-12
++     VJC = 0.5444
++     MJC = 0.3968
++     XCJC = 0.6193
++     TR = 9.5E-08
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.999)
+*
+
+
+
+
+
+*
+.MODEL BC846B NPN(
++     IS = 1.822E-14
++     NF = 0.9932
++     ISE = 2.894E-16
++     NE = 1.4
++     BF = 324.4
++     IKF = 0.109
++     VAF = 82
++     NR = 0.9931
++     ISC = 9.982E-12
++     NC = 1.763
++     BR = 8.29
++     IKR = 0.09
++     VAR = 17.9
++     RB = 10
++     IRB = 5E-06
++     RBM = 5
++     RE = 0.649
++     RC = 0.7014
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.244E-11
++     VJE = 0.7579
++     MJE = 0.3656
++     TF = 4.908E-10
++     XTF = 9.51
++     VTF = 2.927
++     ITF = 0.3131
++     PTF = 0
++     CJC = 3.347E-12
++     VJC = 0.5463
++     MJC = 0.391
++     XCJC = 0.6193
++     TR = 9E-08
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.979)
+*
+
+*
+.MODEL BC848B NPN(
++     IS = 1.822E-14
++     NF = 0.9932
++     ISE = 2.894E-16
++     NE = 1.4
++     BF = 324.4
++     IKF = 0.109
++     VAF = 82
++     NR = 0.9931
++     ISC = 9.982E-12
++     NC = 1.763
++     BR = 8.29
++     IKR = 0.09
++     VAR = 17.9
++     RB = 10
++     IRB = 5E-06
++     RBM = 5
++     RE = 0.649
++     RC = 0.7014
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.244E-11
++     VJE = 0.7579
++     MJE = 0.3656
++     TF = 4.908E-10
++     XTF = 9.51
++     VTF = 2.927
++     ITF = 0.3131
++     PTF = 0
++     CJC = 3.347E-12
++     VJC = 0.5463
++     MJC = 0.391
++     XCJC = 0.6193
++     TR = 9E-08
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.979)
+*
+
+
+.MODEL BC856A PNP
++(
++ IS = 1.731E-14
++ NF = 1.001
++ ISE = 1.349E-16
++ NE = 1.15
++ BF = 201.9
++ IKF = 0.12
++ VAF = 78
++ NR = 1.002
++ ISC = 4.264E-18
++ NC = 1.15
++ BR = 6.608
++ IKR = 0.045
++ VAR = 12.1
++ RB = 150
++ IRB = 4.5E-05
++ RBM = 0.1
++ RE = 0.7
++ RC = 0.53
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 1.27E-11
++ VJE = 0.7408
++ MJE = 0.3839
++ TF = 8E-10
++ XTF = 5
++ VTF = 5
++ ITF = 0.1
++ PTF = 0
++ CJC = 6.05E-12
++ VJC = 0.7186
++ MJC = 0.4775
++ XCJC = 1
++ TR = 9E-08
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.85
++)
+
+*
+.MODEL QBC856B PNP(
++     IS = 2.014E-14
++     NF = 0.9974
++     ISE = 6.578E-15
++     NE = 1.45
++     BF = 315.3
++     IKF = 0.079
++     VAF = 39.15
++     NR = 0.9952
++     ISC = 1.633E-14
++     NC = 1.15
++     BR = 8.68
++     IKR = 0.09
++     VAR = 9.5
++     RB = 10
++     IRB = 5E-06
++     RBM = 5E-06
++     RE = 0.663
++     RC = 0.718
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.135E-11
++     VJE = 0.7071
++     MJE = 0.3808
++     TF = 6.546E-10
++     XTF = 5.387
++     VTF = 6.245
++     ITF = 0.2108
++     PTF = 0
++     CJC = 6.395E-12
++     VJC = 0.4951
++     MJC = 0.44
++     XCJC = 0.6288
++     TR = 5.5E-08
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.9059)
+*
+
+*
+.MODEL BC857A PNP(
++     IS = 1.17E-14
++     NF = 0.9972
++     ISE = 1.762E-14
++     NE = 1.661
++     BF = 161.3
++     IKF = 0.15
++     VAF = 59.62
++     NR = 0.9967
++     ISC = 1.506E-13
++     NC = 1.32
++     BR = 6.78
++     IKR = 0.048
++     VAR = 15.4
++     RB = 10
++     IRB = 5E-06
++     RBM = 5
++     RE = 0.689
++     RC = 0.61
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.325E-11
++     VJE = 0.8514
++     MJE = 0.3999
++     TF = 8.333E-10
++     XTF = 2.41
++     VTF = 6.262
++     ITF = 0.097
++     PTF = 0
++     CJC = 6.396E-12
++     VJC = 0.2182
++     MJC = 0.333
++     XCJC = 0.6288
++     TR = 7E-08
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.8981)
+*
+*
+.MODEL BC857B PNP(
++     IS = 2.014E-14
++     NF = 0.9974
++     ISE = 6.578E-15
++     NE = 1.45
++     BF = 315.3
++     IKF = 0.079
++     VAF = 39.15
++     NR = 0.9952
++     ISC = 1.633E-14
++     NC = 1.15
++     BR = 8.68
++     IKR = 0.09
++     VAR = 9.5
++     RB = 10
++     IRB = 5E-06
++     RBM = 5E-06
++     RE = 0.663
++     RC = 0.718
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.135E-11
++     VJE = 0.7071
++     MJE = 0.3808
++     TF = 6.546E-10
++     XTF = 5.387
++     VTF = 6.245
++     ITF = 0.2108
++     PTF = 0
++     CJC = 6.395E-12
++     VJC = 0.4951
++     MJC = 0.44
++     XCJC = 0.6288
++     TR = 5.5E-08
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.9059)
+*
+*
+.MODEL BC857C PNP(
++     IS = 3.258E-14
++     NF = 0.999
++     ISE = 3.003E-15
++     NE = 1.45
++     BF = 515.4
++     IKF = 0.066
++     VAF = 25
++     NR = 0.9985
++     ISC = 4.393E-15
++     NC = 1.2
++     BR = 15.26
++     IKR = 0.039
++     VAR = 8
++     RB = 10
++     IRB = 5E-06
++     RBM = 5
++     RE = 0.7071
++     RC = 0.58
++     XTB = 0
++     EG = 1.11
++     XTI = 3
++     CJE = 1.024E-11
++     VJE = 0.9
++     MJE = 0.453
++     TF = 5.971E-10
++     XTF = 4.137
++     VTF = 6.31
++     ITF = 0.2108
++     PTF = 0
++     CJC = 6.345E-12
++     VJC = 0.4254
++     MJC = 0.423
++     XCJC = 0.6288
++     TR = 3.5E-08
++     CJS = 0
++     VJS = 0.75
++     MJS = 0.333
++     FC = 0.78)
+*
+
+
+**************************************
+*      Model Generated by MODPEX     *
+*Copyright(c) Symmetry Design Systems*
+*         All Rights Reserved        *
+*    UNPUBLISHED LICENSED SOFTWARE   *
+*   Contains Proprietary Information *
+*      Which is The Property of      *
+*     SYMMETRY OR ITS LICENSORS      *
+*Commercial Use or Resale Restricted *
+*   by Symmetry License Agreement    *
+**************************************
+* Model generated on Jul 29, 97
+* MODEL FORMAT: PSpice
+*por ruido lo saco del modelo TF=1e-08
+.MODEL TIP31CV2 npn
++IS=9.19839e-10 BF=250.29 NF=1.31842 VAF=10
++IKF=1 ISE=4.03997e-12 NE=1.58322 BR=8.46109
++NR=1.31301 VAR=3.24511 IKR=10 ISC=6.24955e-13
++NC=3.90627 RB=5.04225 IRB=0.1 RBM=0.1
++RE=0.032857 RC=0.164285 XTB=0.1 XTI=1
++EG=1.05 CJE=3.22574e-10 VJE=0.606555 MJE=0.541469
+ XTF=7.90432 VTF=10.4888 ITF=0.00100001
++CJC=3.09833e-10 VJC=0.735177 MJC=0.469501 XCJC=0.799758
++FC=0.8 CJS=0 VJS=0.75 MJS=0.5
++TR=2.59407e-07 PTF=0 KF=0 AF=1
+
+*Del Cadence
+*.model TIP31C  ako:NSC_4F  NPN() ; case TO-220
+*no reconoce Nk=.6134
+*por ruido Tf=19.85n
+.MODEL TIP31C      NPN(Is=2.447p Xti=3 Eg=1.11 Vaf=100 Bf=208.2 Ise=70.69p
++   Ne=1.565 Ikf=.9743 Xtb=1.5 Br=12.59 Isc=11.68n
++   Nc=1.835 Ikr=3.86 Rc=.4685 Cjc=142p Mjc=.4353 Vjc=.75 Fc=.5
++   Cje=188.5p Mje=.4878 Vje=.75 Tr=194.2n Itf=164.1
++   Xtf=5.945 Vtf=10 Rb=.1)
+
+
+*del Cadence
+*.model TIP32C  ako:NSC_5F  PNP() ; case TO-220
+*No reconoce Nk=.5544
+*por ruido Tf=13.05n
+.MODEL TIP32C       PNP(Is=51.23f Xti=3 Eg=1.11 Vaf=100 Bf=434.1 Ise=51.23f Ne=1.22
++   Ikf=.3883 Xtb=2.2 Br=55.47 Isc=51.23f Nc=1.205
++   Ikr=10.87 Rc=.3443 Cjc=136.9p Mjc=.3155 Vjc=.75 Fc=.5
++   Cje=179.9p Mje=.4294 Vje=.75 Tr=20.25n Itf=6.85
++   Xtf=1.573 Vtf=10 Rb=.1)
+
+*no reconoce + NK=.50401
+*por ruido TF=1.7125E-9
+.MODEL 2SC4793 NPN
++ IS=10.000E-15
++ BF=123.13
++ VAF=100
++ IKF=.90849
++ ISE=94.897E-15
++ NE=1.5107
++ BR=1.2126
++ VAR=95
++ IKR=10.000E-3
++ ISC=15.100E-15
++ NC=2.9970
++ RC=.10878
++ CJE=62.671E-12
++ MJE=.33333
++ CJC=48.582E-12
++ MJC=.33333
++ VTF=119.36
++ ITF=35.626
++ TR=3.7088E-6
+
+*no reconoce Nk=.5961
+*ruido Tf=37.34n
+.MODEL MJE3055T    NPN(Is=457.5f Xti=3 Eg=1.11 Vaf=50 Bf=156.7 Ise=1.346p Ne=1.34
++   Ikf=3.296 Xtb=2.2 Br=7.639 Isc=604.1f Nc=2.168
++   Ikr=8.131m Rc=91.29m Cjc=278.7p Mjc=.385 Vjc=.75 Fc=.5 Cje=433p
++   Mje=.5 Vje=.75 Tr=1.412u Itf=35.68 Xtf=1.163 Vtf=10
++   Rb=.1)
+
+*no reconoce Nk=.663
+*ruido Tf=1n
+.model 2sc2335 NPN(Is=3.971p Xti=3 Eg=1.11 Vaf=100 Bf=133.1 Ise=45.6p Ne=1.37
++               Ikf=2.635 Xtb=1.5 Var=100 Br=3.227 Isc=9.551p Nc=1.437
++               Ikr=1.553 Rc=.1044 Cjc=2p Mjc=.3333 Vjc=.75 Fc=.5 Cje=5p
++               Mje=.3333 Vje=.75 Tr=2.655u Itf=1 Xtf=0 Vtf=10)
+
+
+*no reconoce Nk=.6134
+*ruido Tf=19.85n
+.MODEL TIP29C      NPN(Is=2.447p Xti=3 Eg=1.11 Vaf=100 Bf=208.2 Ise=70.69p
++   Ne=1.565 Ikf=.9743 Xtb=1.5 Br=12.59 Isc=11.68n
++   Nc=1.835 Ikr=3.86 Rc=.4685 Cjc=142p Mjc=.4353 Vjc=.75 Fc=.5
++   Cje=188.5p Mje=.4878 Vje=.75 Tr=194.2n  Itf=164.1
++   Xtf=5.945 Vtf=10 Rb=.1)
+
+
+*no reconoce Nk=.5544
+*ruido  Tf=13.05n
+.MODEL TIP30C       PNP(Is=51.23f Xti=3 Eg=1.11 Vaf=100 Bf=434.1 Ise=51.23f Ne=1.22
++   Ikf=.3883 Xtb=2.2 Br=55.47 Isc=51.23f Nc=1.205
++   Ikr=10.87 Rc=.3443 Cjc=136.9p Mjc=.3155 Vjc=.75 Fc=.5
++   Cje=179.9p Mje=.4294 Vje=.75 Tr=20.25n Itf=6.85
++   Xtf=1.573 Vtf=10 Rb=.1)
+
+* no reconoce Nk=.5961
+*ruido Tf=37.34n
+.MODEL TIP41C      NPN(Is=457.5f Xti=3 Eg=1.11 Vaf=50 Bf=156.7 Ise=1.346p Ne=1.34
++   Ikf=3.296 Xtb=2.2 Br=7.639 Isc=604.1f Nc=2.168
++   Ikr=8.131m Rc=91.29m Cjc=278.7p Mjc=.385 Vjc=.75 Fc=.5 Cje=433p
++   Mje=.5 Vje=.75 Tr=1.412u  Itf=35.68 Xtf=1.163 Vtf=10
++   Rb=.1)
+
+
+*no reconoce Nk=.5695
+*ruido Tf=23.21n
+.MODEL TIP42C      PNP(Is=66.19f Xti=3 Eg=1.11 Vaf=100 Bf=137.6 Ise=862.2f
++   Ne=1.481 Ikf=1.642 Xtb=2 Br=5.88 Isc=273.5f Nc=1.24
++   Ikr=3.555 Rc=79.39m Cjc=870.4p Mjc=.6481 Vjc=.75 Fc=.5
++   Cje=390.1p Mje=.4343 Vje=.75 Tr=235.4n  Itf=71.33
++   Xtf=5.982 Vtf=10 Rb=.1)
+
+*************************************
+*************************************************************************************************
+*USADO HASTA EL MOMENTO********************
+**********************************
+
+* CA3086/CA3018 NPN model
+* created using Parts release 6.3a on 02/15/97 at 16:18
+* Parts is a MicroSim product.
+.MODEL CA3086 NPN(
++ IS=10.000E-15
++ BF=156.66
++ VAF=100
++ IKF=36.783E-3
++ ISE=114.82E-15
++ NE=1.4743
++ BR=.1001
++ VAR=100
++ IKR=10.010E-3
++ ISC=10.000E-15
++ RC=10
++ CJE=1.0260E-12
++ MJE=.33333
++ CJC=991.79E-15
++ MJC=.33333
++ TF=278.55E-12
++ XTF=91.905
++ VTF=18.899
++ ITF=.77631
++ TR=10.000E-9)
+
+
+
+
+**************************************
+*      Model Generated by MODPEX     *
+*Copyright(c) Symmetry Design Systems*
+*         All Rights Reserved        *
+*    UNPUBLISHED LICENSED SOFTWARE   *
+*   Contains Proprietary Information *
+*      Which is The Property of      *
+*     SYMMETRY OR ITS LICENSORS      *
+*    Modeling services provided by   *
+* Interface Technologies www.i-t.com *
+**************************************
+.MODEL Qtip50 npn
++IS=1.56416e-15 BF=355.152 NF=0.851039 VAF=10
++IKF=0.0598553 ISE=1.24328e-10 NE=1.62606 BR=8.8702
++NR=0.806933 VAR=100 IKR=0.0653249 ISC=1e-16
++NC=1.06812 RB=1.50732 IRB=0.282371 RBM=0.1
++RE=0.000224288 RC=0.00112144 XTB=2.17854 XTI=4
++EG=1.206 CJE=2.62149e-09 VJE=0.659822 MJE=0.332313
++TF=4.71747e-09 XTF=1.5 VTF=0.999973 ITF=1.00001
++CJC=2.99337e-10 VJC=0.599874 MJC=0.410554 XCJC=0.8
++FC=0.524161 CJS=0 VJS=0.75 MJS=0.5
++TR=1e-07 PTF=0 KF=0 AF=1
+* Model generated on Dec 22, 2003
+* Model format: PSpice
+
+
+
+
+
+.MODEL QMPSA92 PNP (Is=218.9f Xti=3 Eg=1.11 Vaf=100 Bf=99 Ne=1.307 Ise=218.9f Ikf=.2016 Xtb=1.5 Br=24.67 Nc=2 Isc=0 Ikr=0 Rc=7 Cjc=19.88p Mjc=.4876 Vjc=.75 Fc=.5 Cje=81.49p Mje=.3493 Vje=.75 Tr=516.9p Tf=1.395n Itf=1.5 Vtf=22 Xtf=270 Rb=10)
+
+
+
+
+
+
+
+*
+**********************************************************
+*
+* BC327-40
+*
+* NXP Semiconductors
+*
+* General purpose PNP transistor
+* IC   = 500 mA
+* VCEO = 45 V
+* hFE  = 250 - 600 @ 1V/100mA
+*
+*
+*
+* Package: SOT 54
+*
+* Package Pin 1: Emitter
+* Package Pin 2: Base
+* Package Pin 3: Collector
+*
+*
+* Extraction date (week/year): 31/2003
+* Simulator: Spice 3
+*
+**********************************************************
+*#
+.MODEL QBC327-40 PNP
++ IS = 2.077E-13
++ NF = 1.005
++ ISE = 1.411E-14
++ NE = 1.3
++ BF = 449.8
++ IKF = 0.36
++ VAF = 29
++ NR = 1.002
++ ISC = 2.963E-13
++ NC = 1.25
++ BR = 20.92
++ IKR = 0.104
++ VAR = 10
++ RB = 40
++ IRB = 1E-05
++ RBM = 5.3
++ RE = 0.14
++ RC = 0.32
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 5E-11
++ VJE = 0.9296
++ MJE = 0.456
++ TF = 7E-10
++ XTF = 3.25
++ VTF = 2.5
++ ITF = 0.79
++ PTF = 80
++ CJC = 2.675E-11
++ VJC = 0.8956
++ MJC = 0.4638
++ XCJC =  0.459
++ TR = 3.5E-08
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.935
+.ENDS
+*

@@ -1,0 +1,1 @@
+La diferencia es que la use para fisica semiconductores agregando el model NMOS con varios LEVELS de sim. El archivo modelo NMOS tiene tambien modelos agregados. Luego, ningun cambio adicional.

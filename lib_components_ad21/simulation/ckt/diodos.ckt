@@ -1,0 +1,405 @@
+*Modelo de diodo con todos los parámetros disponibles
+*como no puedo usar "infinite" para dar valor a las cosas que por defecto son infinitas,uso 1T (1T=1E12)
+*Si se lo utiliza tal cual está aquí con los valores por defecto, indica que hay una incompatibilidad con un valor, y advierte que
+*lo cambia, sin embargo, estos son los mismos valores que utiliza por defecto el modelo del diodo, a excepción de BV
+.SUBCKT DIODE A K PARAMS: IS=1.0e-14 RS=0 N=1 TT=0 CJO=0 VJ=1 M=0.5 EG=1.11 XTI=3 KF=0 AF=1 FC=0.5 BV=1T IBV=1.0e-3
+D1 A K Di
+.MODEL Di D(IS={IS} RS={RS} N={N} TT={TT} CJO={CJO} VJ={VJ} M={M} EG={EG} XTI={XTI} KF={KF} AF={AF} FC={FC} BV={BV} IBV={IBV})
+.ENDS DIODE
+
+*De Protel
+*1N746A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*3.3V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N746V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  2.536
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=182P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=5.59M RS=8.4 N=15)
+.ENDS
+
+*1N747A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*3.6V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N747V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  2.888
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=160P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=4.52M RS=7.2 N=13)
+.ENDS
+
+*1N748A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*3.9V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N748V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  3.2
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=142P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=4.23M RS=6.9 N=12)
+.ENDS
+
+
+*1N749A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*4.3V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N749V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  3.613
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=122P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=3.94M RS=6.6 N=12)
+.ENDS
+
+
+*1N750A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*4.7V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N750V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  4.048
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=107P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=3.05M RS=5.7 N=10)
+.ENDS
+
+
+*1N751A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*5.1V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N751V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  4.471
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=94.6P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=2.45M RS=5.1 N=9.2)
+.ENDS
+
+
+*1N752A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*5.6V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N752V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  5.028
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=82.3P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=778U RS=3.3 N=5.9)
+.ENDS
+
+
+*1N753A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*6.2V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N753V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  5.658
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=70.6P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=122U RS=2.1 N=3.8)
+.ENDS
+
+*1N754A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*6.8V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N754V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  6.27
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=61.5P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=15.8U RS=1.5 N=2.7)
+.ENDS
+
+
+*1N755A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*7.5V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N755V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  6.964
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=53.1P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=52U RS=1.8 N=3.2)
+.ENDS
+
+
+*1N756A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*8.2V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N756V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  7.651
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=46.4P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=230U RS=2.4 N=4.3)
+.ENDS
+
+
+*1N757A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*9.1V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N757V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  8.536
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=39.7P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=562U RS=3 N=5.4)
+.ENDS
+
+
+*1N758A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*10V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N758V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  9.371
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=34.5P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=2.45M RS=5.1 N=9.2)
+.ENDS
+
+
+*1N759A MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*12V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N759V2   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  11.21
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=54.6P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=6.08M RS=9 N=16)
+.ENDS
+
+
+*1N960B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*9.1V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N960   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  8.569
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=39.7P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=15.6U RS=2.25 N=2.8)
+.ENDS
+
+*1N961B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*10V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N961   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  9.468
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=34.5P VJ=0.75 M=0.33 TT=50.1N)
+.MODEL DR D (IS=15U RS=2.55 N=2.9)
+.ENDS
+
+
+*1N962B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*11V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N962  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  10.47
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=58.2P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=16.6U RS=2.85 N=3)
+.ENDS
+
+
+*1N963B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*12V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N963  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  11.46
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=54.6P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=28.3U RS=3.45 N=3.3)
+.ENDS
+
+
+*1N964B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*13V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N964  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  12.46
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=51.5P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=29.2U RS=3.9 N=3.3)
+.ENDS
+
+
+*1N965B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*15V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N965  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  14.46
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=46.7P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=44.5U RS=4.8 N=3.7)
+.ENDS
+
+
+*1N966B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*16V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N966  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  15.46
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=44.7P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=35.7U RS=5.1 N=3.6)
+.ENDS
+
+
+*1N967B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*18V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N967  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  17.46
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=41.4P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=54.3U RS=6.3 N=4)
+.ENDS
+
+
+*1N968B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*20V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N968  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  19.45
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=38.8P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=61.8U RS=7.5 N=4.2)
+.ENDS
+
+
+*1N969B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*22V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N969  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  21.45
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=36.6P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=68.9U RS=8.7 N=4.4)
+.ENDS
+
+
+*1N970B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*24V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N970  1 2
+*    TERMINALS: A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  23.45
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=34.8P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=81U RS=9.9 N=4.6)
+.ENDS
+
+
+*1N971B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*27V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N971   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  26.44
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=32.6P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=104U RS=12.3 N=5.1)
+.ENDS
+
+
+*1N972B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*30V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N972   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  29.43
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=30.8P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=131U RS=14.7 N=5.6)
+.ENDS
+
+
+*1N973B MCE 5/30/96
+*Ref: National Discrete Products Databook, 1996
+*33V 500mW Si pkg:DIODE0.4 1,2
+.SUBCKT 1N973   1 2
+*    TERMINALS:  A K
+D1 1 2  DF
+DZ 3 1  DR
+VZ 2 3  32.43
+.MODEL DF D (IS=2.51N RS=84M N=1.7 CJO=29.4P VJ=1 M=0.33 TT=50.1N)
+.MODEL DR D (IS=149U RS=17.4 N=6)
+.ENDS
+
+
+
+
+
+
+*************************************************************************************************
+
+
+
+*****************************************************************
+*Default Diode Bridge Rectifier
+*Connections:
+*              V-
+*              | AC1
+*              | | V+
+*              | | | AC2
+*              | | | |
+.SUBCKT BRIDGE 1 2 3 4
+D1 1 2 DMOD
+D2 1 4 DMOD
+D3 2 3 DMOD
+D4 4 3 DMOD
+.MODEL DMOD D()
+.ENDS BRIDGE
+
+.SUBCKT DZ A K PARAMS: VOLTAJE=6.3
+D1 A K DIODO
+.MODEL DIODO D(BV={VOLTAJE})
+.ENDS DZ
+
+.SUBCKT DSILICIO A K
+D3 A K DIODO
+.MODEL DIODO D()
+.ENDS DSILICIO
+
+

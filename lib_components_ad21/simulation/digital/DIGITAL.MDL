@@ -1,0 +1,17 @@
+*D type Flip-Flop SR activo bajos
+.MODEL ffsr xsimcode(file="C:\FEDE\LIB_PROT\DIGITAL\ffsr.txt" func=ffsr {mntymx})
+* [VCC GND SET RST DATA CLK] [VCC_LD Q QN]
+
+*D type Flip-Flop SR activo altos
+.MODEL ffsrv2 xsimcode(file="C:\FEDE\LIB_PROT\DIGITAL\ffsrv2.txt" func=ffsrv2 {mntymx})
+* [VCC GND SET RST DATA CLK] [VCC_LD Q QN]
+
+*Inversor
+*[VCC GND IN] [VCC OUT]
+.MODEL inv xsimcode(file="C:\FEDE\LIB_PROT\DIGITAL\inv.txt" func=inv {mntymx})
+
+*T type Flip-Flop
+.MODEL fft xsimcode(file="C:\FEDE\LIB_PROT\DIGITAL\fft.txt" func=fft {mntymx})
+* [VCC GND T CLK] [VCC_LD Q QN]
+
+***************************************************************************

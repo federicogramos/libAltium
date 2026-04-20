@@ -1,0 +1,38 @@
+*Vacuum Tube Triode (Audio freq.)
+*Connections:
+*              Plate
+*              | Grid
+*              | | Cathode
+*              | | |
+.SUBCKT V12AU7  1 3 4 PARAMS: VPLKTGain=55.555E-3 GRIDGAIN=868.809E-6
+B1 2 4 I=((URAMP((V(2,4)*{VPLKTGain})+V(3,4)))^1.5)*{GRIDGAIN}
+C1 3 4 1.6E-12
+C2 3 1 1.5E-12
+C3 1 4 0.5E-12
+R1 3 5 10E+3
+D1 1 2 DX
+D2 4 2 DX2
+D3 5 4 DX
+.MODEL DX D(IS=1.0E-12 RS=1.0)
+.MODEL DX2 D(IS=1.0E-9 RS=1.0)
+.ENDS V12AU7
+
+
+*Vacuum Tube Triode (Audio freq.)
+*Connections:
+*              Plate
+*              | Grid
+*              | | Cathode
+*              | | |
+.SUBCKT V12AX7 1 3 4 PARAMS: VPLKTGain=11.764E-3 GRIDGAIN=1.724E-3
+B1 2 4 I=((URAMP((V(2,4)*{VPLKTGain})+V(3,4)))^1.5)*{GRIDGAIN}
+C1 3 4 1.6E-12
+C2 3 1 1.7E-12
+C3 1 4 0.46E-12
+R1 3 5 50E+3
+D1 1 2 DX
+D2 4 2 DX2
+D3 5 4 DX
+.MODEL DX D(IS=1.0E-12 RS=1.0)
+.MODEL DX2 D(IS=1.0E-9 RS=1.0)
+.ENDS V12AX7

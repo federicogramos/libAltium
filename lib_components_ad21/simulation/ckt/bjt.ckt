@@ -1,0 +1,343 @@
+*Modelo de NPN con todos los parámetros disponibles
+*como no puedo usar "infinite" para dar valor a las cosas que por defecto son infinitas,uso 1T (1T=1E12)
+.SUBCKT QNPN  1 2 3 PARAMS: AREAF=1 IS=1.0e-16 BF=100 NF=1 VAF=1T IKF=1T ISE=0 NE=1.5 BR=1 NR=1 VAR=1T IKR=1T ISC=0
++ NC=2 RB=0 IRB=1T RBM=RB RE=0 RC=0 CJE=0 VJE=0.75 MJE=0.33 TF=0 XTF=0 VTF=1T ITF=0 PTF=0 CJC=0 VJC=0.75 MJC=0.33 XCJC=1
++ TR=0 CJS=0 VJS=0.75 MJS=0 XTB=0 EG=1.11 XTI=3 KF=0 AF=1 FC=0.5
+Q1 1 2 3 QNPN {AREAF}
+.MODEL QNPN NPN( IS={IS} BF={BF} NF={NF} VAF={VAF} IKF={IKF} ISE={ISE} NE={NE} BR={BR} NR={NR} VAR={VAR} IKR={IKR} ISC={ISC}
++ NC={NC} RB={RB} IRB={IRB} RBM={RBM} RE={RE} RC={RC} CJE={CJE} VJE={VJE} MJE={MJE} TF={TF} XTF={XTF} VTF={VTF} ITF={ITF} PTF={PTF}
++ CJC={CJC} VJC={VJC} MJC={MJC} XCJC={XCJC} TR={TR} CJS={CJS} VJS={VJS} MJS={MJS} XTB={XTB} EG={EG} XTI={XTI} KF={KF} AF={AF} FC={FC})
+.ENDS QNPN
+
+*Modelo de PNP con todos los parámetros disponibles
+*como no puedo usar "infinite" para dar valor a las cosas que por defecto son infinitas,uso 1T (1T=1E12)
+.SUBCKT QPNP  1 2 3 PARAMS: AREAF=1 IS=1.0e-16 BF=100 NF=1 VAF=1T IKF=1T ISE=0 NE=1.5 BR=1 NR=1 VAR=1T IKR=1T ISC=0
++ NC=2 RB=0 IRB=1T RBM=RB RE=0 RC=0 CJE=0 VJE=0.75 MJE=0.33 TF=0 XTF=0 VTF=1T ITF=0 PTF=0 CJC=0 VJC=0.75 MJC=0.33 XCJC=1
++ TR=0 CJS=0 VJS=0.75 MJS=0 XTB=0 EG=1.11 XTI=3 KF=0 AF=1 FC=0.5
+Q1 1 2 3 QPNP {AREAF}
+.MODEL QPNP PNP( IS={IS} BF={BF} NF={NF} VAF={VAF} IKF={IKF} ISE={ISE} NE={NE} BR={BR} NR={NR} VAR={VAR} IKR={IKR} ISC={ISC}
++ NC={NC} RB={RB} IRB={IRB} RBM={RBM} RE={RE} RC={RC} CJE={CJE} VJE={VJE} MJE={MJE} TF={TF} XTF={XTF} VTF={VTF} ITF={ITF} PTF={PTF}
++ CJC={CJC} VJC={VJC} MJC={MJC} XCJC={XCJC} TR={TR} CJS={CJS} VJS={VJS} MJS={MJS} XTB={XTB} EG={EG} XTI={XTI} KF={KF} AF={AF} FC={FC})
+.ENDS QPNP
+
+*De la librería del Cadence
+* bdw93 Darlington Transistor "macromodel" subcircuit
+* Manufacturer FAIRCHILD SEMICONDUCTOR
+* DATE 04/23/01
+* Modeled at PSpice-ITeam nikkel
+*
+* connections:    Collector
+*                 |  Base
+*                 |  |  Emitter
+*                 |  |  |
+.SUBCKT bdw93     1  2  3
+*
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model .9844
+D1 3 1 Dmodel
+R1 2 4 1.000E6
+R2 4 3 1.000E6
+.MODEL Dmodel D
++ IS=10.00E-15 RS=1.000E-3 N=1 XTI=3
++  CJO=10.00E-21 VJ=1 M=.5 FC=.5
+*No reconoce parámetro NK=.7847 (Q1model)
+.MODEL Q1model NPN
++  IS=581.5E-15 BF=2000 NF=1 VAF=100
++  IKF=4 ISE=13.16E-12 NE=1.412 BR=69.97
++  NR=1 VAR=100 IKR=5.867 ISC=2.208E-12
++  NC=1.850 RB=.3168
++  RE=0 RC=.01 EG=1.110
++  CJE=10.00E-12 VJE=.75 MJE=.33 TF=1.000E-9
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=164.0E-12
++  VJC=1.999 MJC=.3185 XCJC=.9 FC=.5
++  TR=1.000E-9
+*No reconoce parámetro NK=.7847 (Q2model)
+.MODEL Q2model NPN
++  IS=581.5E-15 BF=2000 NF=1 VAF=100
++  IKF=4 ISE=13.16E-12 NE=1.412 BR=69.97
++  NR=1 VAR=100 IKR=5.867 ISC=2.208E-12
++  NC=1.850 RB=.3168
++  RE=0 RC=.01 EG=1.110
++  CJE=10.00E-12 VJE=.75 MJE=.33 TF=1.000E-9
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=0
++  VJC=1.999 MJC=.3185 XCJC=.9 FC=.5
++  TR=1.000E-9
+.ENDS
+
+
+*Del Cadence
+* Motorola 100 Volt 2 Amp Darlington Transistor  07/20/98
+*
+* connections:    Collector
+*                 |  Base
+*                 |  |  Emitter
+*                 |  |  |
+.SUBCKT TIP117    1  2  3
+*
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model 19.07
+D1 1 3 Dmodel
+R1 2 4 8.000E3
+R2 4 3 60
+
+*no reconoce + ISR=100.00E-12
+.MODEL Dmodel D
++ IS=3.4721E-12
++ N=3.4748
++ RS=1.0000E-3
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=120
++ IBV=1.00E-6
++ TT=5.0000E-9
+
+*Eliminado TF=8.00E-9, ya que genera mala señal con el TL084
+*No reconoce NK=.545 (Q1model)
+.MODEL Q1model PNP
++  IS=42.45E-15 BF=707.4 NF=1 VAF=100
++  IKF=10.01E-3 ISE=55.78E-15 NE=1.998 BR=.1001
++  NR=1 VAR=100 IKR=10.61 ISC=907.3E-15
++  NC=2.997 RB=7.69995
++  RE=0 RC=0.00100321 EG=1.110
++  CJE=46.60E-12 VJE=.35 MJE=.2506
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=106.0E-12
++  VJC=1.330 MJC=.3062 XCJC=.9 FC=.5
++  TR=4.00E-5
+
+*no reconoce NK=.545 (Q2model)
+*Idem  TF=8.00E-9
+.MODEL Q2model PNP
++  IS=42.45E-15 BF=707.4 NF=1 VAF=100
++  IKF=10.01E-3 ISE=55.78E-15 NE=1.998 BR=.1001
++  NR=1 VAR=100 IKR=10.61 ISC=907.3E-15
++  NC=2.997 RB=7.69995
++  RE=0 RC=0.00100321 EG=1.110
++  CJE=46.60E-12 VJE=.35 MJE=.2506
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=0
++  VJC=1.330 MJC=.3062 XCJC=.9 FC=.5
++  TR=4.00E-5
+.ENDS
+
+
+
+*Del Cadence
+* Motorola 100 Volt 2 Amp Darlington Transistor  07/20/98
+*
+* connections:    Collector
+*                 |  Base
+*                 |  |  Emitter
+*                 |  |  |
+.SUBCKT TIP112    1  2  3
+*
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model .5
+D1 3 1 Dmodel
+R1 2 4 8.000E3
+R2 4 3 60
+
+*no reconoce + ISR=100.00E-12
+.MODEL Dmodel D
++ IS=3.4721E-12
++ N=3.4748
++ RS=1.0000E-3
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=120
++ IBV=1.00E-6
++ TT=5.0000E-9
+
+*no reconoce NK=.4507
+*Idem TF=12.00E-9
+.MODEL Q1model NPN
++  IS=1.961E-12 BF=2.997E3 NF=1 VAF=100
++  IKF=10.01E-3 ISE=4.706E-12 NE=1.428 BR=.1954
++  NR=1 VAR=100 IKR=7.974 ISC=2.203E-12
++  NC=2.997 RB=0.100825
++  RE=0 RC=0.167214 EG=1.110
++  CJE=38.29E-12 VJE=.35 MJE=.321
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=41.23E-12
++  VJC=1.162 MJC=.1636 XCJC=.9 FC=.5
++  TR=1.00E-5
+
+*no reconoce NK=.4507
+*Idem  TF=12.00E-9
+.MODEL Q2model NPN
++  IS=1.961E-12 BF=2.997E3 NF=1 VAF=100
++  IKF=10.01E-3 ISE=4.706E-12 NE=1.428 BR=.1954
++  NR=1 VAR=100 IKR=7.974 ISC=2.203E-12
++  NC=2.997 RB=0.100825
++  RE=0 RC=0.167214 EG=1.110
++  CJE=38.29E-12 VJE=.35 MJE=.321
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=0
++  VJC=1.162 MJC=.1636 XCJC=.9 FC=.5
++  TR=1.00E-5
+.ENDS
+
+
+
+*Cadence
+* Motorola 100 Volt 5 Amp Darlington Transistor  07/20/98
+*
+* connections:    Collector
+*                 |  Base
+*                 |  |  Emitter
+*                 |  |  |
+.SUBCKT TIP122    1  2  3
+*
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model 19.61
+D1 3 1 Dmodel
+R1 2 4 8.000E3
+R2 4 3 120
+
+*no reconoce + ISR=100.00E-12
+.MODEL Dmodel D
++ IS=2.1341E-12
++ N=3.4748
++ RS=1.0000E-3
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=120
++ IBV=1.00E-6
++ TT=5.0000E-9
+
+*no reconoce NK=.5871
+*originalmente TF=18.00E-9 pero lo cambié al valor por defecto, ya que
+*cuando simulaba excitándolo con el modelo del tl081, la señal salía como con excesivo ruido.
+*Algo raro, es que si simulaba con el TL061, no sucedía nada de eso.
+.MODEL Q1model NPN
++  IS=209.2E-15 BF=2.997E3 NF=1 VAF=100
++  IKF=71.77E-3 ISE=4.744E-12 NE=1.447 BR=36.63
++  NR=1 VAR=100 IKR=.4299 ISC=1.630E-12
++  NC=1.002 RB=27.3662
++  RE=0 RC=3.26784 EG=1.110
++  CJE=111.8E-12 VJE=.5941 MJE=.4082
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=160.1E-12
++  VJC=.5399 MJC=.1963 XCJC=.9 FC=.5
++  TR=12.00E-6
+
+
+*no reconoce NK=.5871
+*originalmente TF=18.00E-9 pero lo cambié al valor por defecto, ya que
+*cuando simulaba excitándolo con el modelo del tl081, la señal salía como con excesivo ruido.
+*Algo raro, es que si simulaba con el TL061, no sucedía nada de eso.
+.MODEL Q2model NPN
++  IS=209.2E-15 BF=2.997E3 NF=1 VAF=100
++  IKF=71.77E-3 ISE=4.744E-12 NE=1.447 BR=36.63
++  NR=1 VAR=100 IKR=.4299 ISC=1.630E-12
++  NC=1.002 RB=27.3662
++  RE=0 RC=3.26784 EG=1.110
++  CJE=111.8E-12 VJE=.5941 MJE=.4082
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=0
++  VJC=.5399 MJC=.1963 XCJC=.9 FC=.5
++  TR=12.00E-6
+.ENDS
+
+*Del Cadence
+* TIP127 Darlington Transistor "macromodel" subcircuit
+* created using Parts release 8.1 on 01/09/98 at 15:34
+* Parts is an Cadence Design Systems product.
+* Macromodel valid for TIP127, TIP128, and TIP129
+*
+* connections:    Collector
+*                 |  Base
+*                 |  |  Emitter
+*                 |  |  |
+.SUBCKT TIP127    1  2  3
+*
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model 1.008
+D1 1 3 Dmodel
+R1 2 4 7.200E3
+R2 4 3 120
+.MODEL Dmodel D
++ IS=10.00E-15 RS=1.000E-3 N=1 XTI=3
++  CJO=10.00E-21 VJ=1 M=.5 FC=.5
+
+*No reconoce el parámetro: NK=.7332 (Q1model)
+*Eliminé TF=2100p. sucedía lo mismo que con el tip122
+.MODEL Q1model PNP
++  IS=57.28E-15 BF=2.997E3 NF=1 VAF=100
++  IKF=1.511 ISE=1.049E-12 NE=1.386 BR=.1021
++  NR=1 VAR=100 IKR=4.319 ISC=9.571E-12
++  NC=1.517 RB=1.347
++  RE=0 RC=.1061 EG=1.110
++  CJE=145.6E-12 VJE=.9672 MJE=.4056
++  XTF=10 VTF=10 ITF=1 CJC=232.7E-12
++  VJC=1.500 MJC=.244 XCJC=.9 FC=.5
++  TR=14.0E-6
+
+*No reconoce: NK=.7332 (Q2model)
+*idem TF=2100p
+.MODEL Q2model PNP
++  IS=57.28E-15 BF=2.997E3 NF=1 VAF=100
++  IKF=1.511 ISE=1.049E-12 NE=1.386 BR=.1021
++  NR=1 VAR=100 IKR=4.319 ISC=9.571E-12
++  NC=1.517 RB=1.347
++  RE=0 RC=.1061 EG=1.110
++  CJE=145.6E-12 VJE=.9672 MJE=.4056
++  XTF=10 VTF=10 ITF=1 CJC=0
++  VJC=1.500 MJC=.244 XCJC=.9 FC=.5
++  TR=14.0E-6
+.ENDS
+
+
+
+*Cadence
+* Motorola 100 Volt 10 Amp Darlington Transistor  07/20/98
+*
+* connections:    Collector
+*                 |  Base
+*                 |  |  Emitter
+*                 |  |  |
+.SUBCKT TIP147    1  2  3
+*
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model 5.131
+D1 1 3 Dmodel
+R1 2 4 8.000E3
+R2 4 3 40
+
+*no reconoce + ISR=100.00E-12
+.MODEL Dmodel D
++ IS=4.3887E-12
++ N=3.4748
++ RS=1.0000E-3
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=120
++ IBV=1.00E-6
++ TT=5.0000E-9
+
+* no reconoce NK=.7315
+*idem TF=15.00E-9
+.MODEL Q1model PNP
++  IS=350.7E-15 BF=2.997E3 NF=1 VAF=100
++  IKF=.7028 ISE=20.45E-12 NE=1.522 BR=.1001
++  NR=1 VAR=100 IKR=4.029 ISC=21.47E-9
++  NC=1.562 RB=5.07314
++  RE=0 RC=0.00101053 EG=1.110
++  CJE=2.000E-12 VJE=.75 MJE=.33
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=2.000E-12
++  VJC=.75 MJC=.33 XCJC=.9 FC=.5
++  TR=8.00E-5
+
+*no reconoce NK=.7315
+*idem TF=15.00E-9
+.MODEL Q2model PNP
++  IS=350.7E-15 BF=2.997E3 NF=1 VAF=100
++  IKF=.7028 ISE=20.45E-12 NE=1.522 BR=.1001
++  NR=1 VAR=100 IKR=4.029 ISC=21.47E-9
++  NC=1.562 RB=5.07314
++  RE=0 RC=0.00101053 EG=1.110
++  CJE=2.000E-12 VJE=.75 MJE=.33
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=0
++  VJC=.75 MJC=.33 XCJC=.9 FC=.5
++  TR=8.00E-5
+.ENDS
+
+********************************************************************

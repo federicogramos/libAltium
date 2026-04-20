@@ -1,0 +1,10 @@
+Output: Mixed Sim
+Type  : AdvSimNetlist
+From  : Project [MODELO TRANSFORMADOR.PRJPCB]
+   Generated File[MODELO TRANSFORMADOR.nsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 10:52:44 PM On 2/9/2008
